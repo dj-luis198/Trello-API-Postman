@@ -22,8 +22,8 @@ jobs:
         run: |
           npx postman-cli collection run collection.json \
             -e environment.json \
-            --env-var "KEY=${{ secrets.KEY }}" \
-            --env-var "TOKEN=${{ secrets.TOKEN }}" \
+            --env-var "key=${{ secrets.KEY }}" \
+            --env-var "token=${{ secrets.TOKEN }}" \
             --reporters cli,html \
             --reporter-html-export reporte.html
 
