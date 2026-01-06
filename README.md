@@ -1,3 +1,5 @@
+[![Run API Tests and Publish Dashboard](https://github.com/dj-luis198/Trello-API-Postman/actions/workflows/api-tests.yml/badge.svg)](https://github.com/dj-luis198/Trello-API-Postman/actions/workflows/api-tests.yml)
+
 # Trello API Testing with Postman CLI 🚀
 
 Este proyecto contiene pruebas automatizadas para la API de Trello utilizando **Postman CLI** y **GitHub Actions**.  
