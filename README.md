@@ -3,7 +3,7 @@
 # Trello API Testing with Postman CLI 🚀
 
 Este proyecto contiene pruebas automatizadas para la API de Trello utilizando **Postman CLI** y **GitHub Actions**.  
-El objetivo es validar el flujo de trabajo de tarjetas en un tablero Kanban con tres listas: **TODO**, **IN PROGRESS** y **DONE**.
+El objetivo es validar el flujo de trabajo de tarjetas en un tablero Kanban con tres listas: **TO DO**, **IN PROGRESS** y **DONE**.
 
 🔗 **Reporte en vivo:** [Dashboard de pruebas](https://dj-luis198.github.io/Trello-API-Postman/)
 
@@ -12,7 +12,7 @@ El objetivo es validar el flujo de trabajo de tarjetas en un tablero Kanban con 
 ## 📌 Descripción del flujo de pruebas
 
 1. **Creación de tarjetas**  
-   - Se crean nuevas cards en la lista **TODO**.
+   - Se crean nuevas cards en la lista **TO DO**.
 
 2. **Movimiento de tarjetas**  
    - Las cards se mueven progresivamente a **IN PROGRESS** y luego a **DONE**.
