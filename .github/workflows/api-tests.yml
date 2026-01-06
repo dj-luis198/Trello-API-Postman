@@ -20,8 +20,8 @@ jobs:
       # Ejecutar colección con npx
       - name: Run Postman tests
         run: |
-          npx postman-cli collection run postman/collection.json \
-            -e postman/environment.json \
+          npx postman-cli collection run collection.json \
+            -e environment.json \
             --env-var "KEY=${{ secrets.KEY }}" \
             --env-var "TOKEN=${{ secrets.TOKEN }}" \
             --reporters cli,html \
