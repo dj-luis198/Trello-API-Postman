@@ -1,5 +1,4 @@
 name: Run API Tests and Publish Dashboard
-
 on:
   push:
     branches: [ main ]
