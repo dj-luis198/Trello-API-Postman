@@ -13,25 +13,28 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # Acción oficial de Postman CLI
-      - name: Run Postman CLI
-        uses: postmanlabs/postman-cli-action@v1
-        with:
-          api-key: ${{ secrets.POSTMAN_API_KEY }}
-          command: >
-            postman collection run coleccion.json
-            -e environment.json
-            --env-var "KEY=${{ secrets.KEY }}"
-            --env-var "TOKEN=${{ secrets.TOKEN }}"
-            --reporters cli,html
+      # Instalar Postman CLI localmente
+      - name: Install Postman CLI
+        run: npm install postman-cli
+
+      # Ejecutar colección con npx
+      - name: Run Postman tests
+        run: |
+          npx postman-cli collection run postman/collection.json \
+            -e postman/environment.json \
+            --env-var "KEY=${{ secrets.KEY }}" \
+            --env-var "TOKEN=${{ secrets.TOKEN }}" \
+            --reporters cli,html \
             --reporter-html-export reporte.html
 
+      # Subir el reporte como artefacto
       - name: Upload HTML report artifact
         uses: actions/upload-artifact@v4
         with:
           name: postman-dashboard
           path: reporte.html
 
+      # Publicar el dashboard en GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
