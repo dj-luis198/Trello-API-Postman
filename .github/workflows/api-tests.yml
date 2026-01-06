@@ -27,16 +27,15 @@ jobs:
             --reporters cli,html \
             --reporter-html-export reporte.html
 
+      - name: Sanitize report
+        run: |
+          sed -i 's/${{ secrets.KEY }}/{{key}}/g' reporte.html
+          sed -i 's/${{ secrets.TOKEN }}/{{token}}/g' reporte.html
+
       - name: Prepare report for Pages
         run: |
           mkdir -p public
           mv reporte.html public/index.html
-
-      - name: Upload HTML report artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: postman-dashboard
-          path: public/index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
