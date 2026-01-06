@@ -8,6 +8,15 @@
 			"type": "secret",
 			"enabled": true
 		},
+		{ "key": "key",
+		  "value": "{{key}}",
+		  "enabled": true 
+		},
+		{ 
+		  "key": "token",
+		  "value": "{{token}}",
+		  "enabled": true 
+		},
 		{
 			"key": "ListB",
 			"value": "695d02e596311470aacbeb94",
