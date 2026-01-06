@@ -1,0 +1,41 @@
+name: Run API Tests and Publish Dashboard
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install Postman CLI
+        run: npm install -g postman-cli
+
+      - name: Run Postman tests
+        run: |
+          postman collection run coleccion.json \
+            -e environment.json \
+            --env-var "KEY=${{ secrets.KEY }}" \
+            --env-var "TOKEN=${{ secrets.TOKEN }}" \
+            --reporters cli,html \
+            --reporter-html-export reporte.html
+
+      - name: Upload HTML report artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: postman-dashboard
+          path: reporte.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          publish_branch: gh-pages
+          keep_files: true
+          allow_empty_commit: true
