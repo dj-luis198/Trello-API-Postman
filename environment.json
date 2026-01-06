@@ -1,0 +1,104 @@
+{
+	"id": "49dcd2b4-d093-4238-a5c1-89629b7224a1",
+	"name": "Ambiente QA",
+	"values": [
+		{
+			"key": "ListA",
+			"value": "695d02e596311470aacbeb93",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "ListB",
+			"value": "695d02e596311470aacbeb94",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "ListC",
+			"value": "695d02e596311470aacbeb95",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "Members1",
+			"value": "63025f76c4ec8020bf5fa19d",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "Members2",
+			"value": "632d0d4f6f6e76022e5c01d0",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "IdLabels1",
+			"value": "632d0ce137ccc99fc3ac1a72",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "IdLabels2",
+			"value": "632d0ce137ccc99fc3ac1a76",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "GET",
+			"value": "https://api.trello.com/1/cards",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "POST",
+			"value": "https://api.trello.com/1/cards",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "UPDATE",
+			"value": "https://api.trello.com/1/cards",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "DELETE",
+			"value": "https://api.trello.com/1/cards",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "GETlist",
+			"value": "https://api.trello.com/1/lists",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "GETboards",
+			"value": "https://api.trello.com/1/boards/",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "IdBoard",
+			"value": "695d02e596311470aacbeb63",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "memberships",
+			"value": "memberships",
+			"enabled": true
+		},
+		{
+			"key": "cards",
+			"value": "cards",
+			"enabled": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-01-06T15:16:29.775Z",
+	"_postman_exported_using": "Postman/11.77.2"
+}

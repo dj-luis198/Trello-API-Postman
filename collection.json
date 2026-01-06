@@ -1,0 +1,1520 @@
+{
+	"info": {
+		"_postman_id": "1e733841-fbe4-4be7-9cef-b8cbed5235c8",
+		"name": "US 23269 | TX | Trello | Cards | Crear, Modificar, Mover y Eliminar Tarjetas de un Tablero",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37663542",
+		"_collection_link": "https://testing-6553.postman.co/workspace/API-Trello~c1a1b32b-795d-405f-9d0b-d397ceb6278a/collection/37663542-1e733841-fbe4-4be7-9cef-b8cbed5235c8?action=share&source=collection_link&creator=37663542"
+	},
+	"item": [
+		{
+			"name": "US 23269 | TS1 | {API} Trello | Cards | Crear cards de un tablero.",
+			"item": [
+				{
+					"name": "US 23269 | Precond: La lista “TO DO” debe estar disponible en el tablero.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body= pm.response.json()\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", ()=>{\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"pm.test(\"El nombre de la lista deberia ser 'TO DO'\",()=>{\r",
+									"    pm.expect(body.name).to.eql(\"TO DO\")\r",
+									"})\r",
+									"pm.test(\"La lista no deberia estar archivada\",()=>{\r",
+									"    pm.expect(body.closed).to.eql(false)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{GETlist}}/:id?key={{key}}&token={{token}}",
+							"host": [
+								"{{GETlist}}"
+							],
+							"path": [
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{ListA}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "US 23269 | Precond: La lista “IN PROGRESS” debe estar disponible en el tablero.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body= pm.response.json()\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", ()=>{\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"pm.test(\"El nombre de la lista deberia ser 'IN PROGRESS'\",()=>{\r",
+									"    pm.expect(body.name).to.eql(\"IN PROGRESS\")\r",
+									"})\r",
+									"pm.test(\"La lista no deberia estar archivada\",()=>{\r",
+									"    pm.expect(body.closed).to.eql(false)\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{GETlist}}/:id?key={{key}}&token={{token}}",
+							"host": [
+								"{{GETlist}}"
+							],
+							"path": [
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{ListB}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "US 23269 | Precond: La lista “DONE” debe estar disponible en el tablero.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body= pm.response.json()\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", ()=>{\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"pm.test(\"El nombre de la lista deberia ser 'DONE'\",()=>{\r",
+									"    pm.expect(body.name).to.eql(\"DONE\")\r",
+									"})\r",
+									"pm.test(\"La lista no deberia estar archivada\",()=>{\r",
+									"    pm.expect(body.closed).to.eql(false)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{GETlist}}/:id?key={{key}}&token={{token}}",
+							"host": [
+								"{{GETlist}}"
+							],
+							"path": [
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{ListC}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "US 23269 | Precond: Todas las listas estan vacias",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body= pm.response.json()\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", ()=>{\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"pm.test(\"No deberia haber cards en el board\",()=>{\r",
+									"    pm.expect([]).to.be.empty;\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{GETboards}}/:id/{{cards}}?key={{key}}&token={{token}}",
+							"host": [
+								"{{GETboards}}"
+							],
+							"path": [
+								":id",
+								"{{cards}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{IdBoard}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "US 23269 | Precond: Hay 2 miembros agregados en e tablero.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body= pm.response.json()\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", ()=>{\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"deberia de tener 2 miembros agregados al tablero\",()=>{\r",
+									"    pm.expect([1, 2, 3]).to.have.lengthOf(3);\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{GETboards}}/:id/{{memberships}}?key={{key}}&token={{token}}",
+							"host": [
+								"{{GETboards}}"
+							],
+							"path": [
+								":id",
+								"{{memberships}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{IdBoard}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "US 23269 | TS1 | TC#1: Validar crear primera card en la lista “TO DO”. (name: corto)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const name = pm.variables.replaceIn(\"{{$randomFullName}}\");\r",
+									"pm.collectionVariables.set(\"CardName\", name)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body= pm.response.json()\r",
+									"const name= pm.collectionVariables.get(\"CardName\")\r",
+									"const idListA= pm.environment.get(\"ListA\")\r",
+									"const pos= body.pos\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", ()=>{\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"pm.test(\"la card deberia estar en la lista 'TO DO'\",()=>{\r",
+									"    pm.expect(body.idList).to.eql(idListA)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"El nombre de la card deberia ser igual al ingresado\",()=>{\r",
+									"    pm.expect(body.name).to.eql(name)\r",
+									"})\r",
+									"pm.collectionVariables.set(\"idCard1\", body.id)\r",
+									"pm.collectionVariables.unset(\"CardName\");\r",
+									"pm.collectionVariables.set(\"Poscard1\",pos);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{POST}}/?idList={{ListA}}&token={{token}}&key={{key}}&name={{CardName}}",
+							"host": [
+								"{{POST}}"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "idList",
+									"value": "{{ListA}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "name",
+									"value": "{{CardName}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "US 23269 | TS1 | TC#2: Validar crear segunda card en la lista “TO DO”. (name: null)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body= pm.response.json()\r",
+									"const name= pm.collectionVariables.get(\"CardName\")\r",
+									"const idListA= pm.environment.get(\"ListA\")\r",
+									"const pos= body.pos\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", ()=>{\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"pm.test(\"la card deberia estar en la lista 'TO DO'\",()=>{\r",
+									"    pm.expect(body.idList).to.eql(idListA)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"El nombre de la card deberia ser igual al ingresado\",()=>{\r",
+									"    pm.expect(body.name).to.be.empty\r",
+									"})\r",
+									"pm.collectionVariables.set(\"Poscard2\",pos);\r",
+									"const pos1= pm.collectionVariables.get(\"Poscard1\")\r",
+									"pm.test(\"Deberia de estar en la ultima posicion\",()=>{\r",
+									"    pm.expect(body.pos).to.be.greaterThan(pos1)\r",
+									"})\r",
+									"\r",
+									"pm.collectionVariables.set(\"idCard2\", body.id)\r",
+									"pm.collectionVariables.unset(\"CardName\");\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{POST}}/?idList={{ListA}}&token={{token}}&key={{key}}",
+							"host": [
+								"{{POST}}"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "idList",
+									"value": "{{ListA}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "name",
+									"value": "{{CardName}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "US 23269 | TS1 | TC#3: Validar crear tercera card en la lista “TO DO”. (name: largo)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const name = pm.variables.replaceIn(\"{{$randomLoremSentence}}\");\r",
+									"pm.collectionVariables.set(\"CardName\", name)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body= pm.response.json()\r",
+									"const name= pm.collectionVariables.get(\"CardName\")\r",
+									"const idListA= pm.environment.get(\"ListA\")\r",
+									"const pos= body.pos\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", ()=>{\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"pm.test(\"la card deberia estar en la lista 'TO DO'\",()=>{\r",
+									"    pm.expect(body.idList).to.eql(idListA)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"El nombre de la card deberia ser igual al ingresado\",()=>{\r",
+									"    pm.expect(body.name).to.eql(name)\r",
+									"})\r",
+									"pm.collectionVariables.set(\"Poscard3\",pos);\r",
+									"const pos2= pm.collectionVariables.get(\"Poscard2\")\r",
+									"pm.test(\"Deberia de estar en la ultima posicion\",()=>{\r",
+									"    pm.expect(body.pos).to.be.greaterThan(pos2)\r",
+									"})\r",
+									"pm.collectionVariables.set(\"idCard3\", body.id)\r",
+									"pm.collectionVariables.unset(\"CardName\");\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{POST}}/?idList={{ListA}}&token={{token}}&key={{key}}&name={{CardName}}",
+							"host": [
+								"{{POST}}"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "idList",
+									"value": "{{ListA}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "name",
+									"value": "{{CardName}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US 23269 | TS2 | {API} Trello | Cards | Mover cards de un tablero.",
+			"item": [
+				{
+					"name": "US 23269 | TS2 | TC#1: Validar mover card3 a la posición 1 de la lista “TO DO”",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const pos2=pm.collectionVariables.get(\"Poscard2\")\r",
+									"const pos3=pm.collectionVariables.get(\"Poscard3\")\r",
+									"pm.collectionVariables.set(\"newPosCard3\",(pos3-pos2)-1)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body = pm.response.json()\r",
+									"const posCard1 = pm.collectionVariables.get(\"Poscard1\")\r",
+									"const posCard2 = pm.collectionVariables.get(\"Poscard2\")\r",
+									"\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", () => {\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Deberia de quedar en la primera posicion\", () => {\r",
+									"    pm.expect(body.pos).to.be.below(posCard1).and.to.be.below(posCard2)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{UPDATE}}/:id?key={{key}}&token={{token}}&pos={{newPosCard3}}",
+							"host": [
+								"{{UPDATE}}"
+							],
+							"path": [
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "pos",
+									"value": "{{newPosCard3}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idCard3}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "US 23269 | TS2 | TC#3: Validar mover card2 a la lista “IN PROGRESS”",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body = pm.response.json()\r",
+									"const pos=body.pos\r",
+									"const idListB=pm.environment.get(\"ListB\")\r",
+									"const posCard1=pm.collectionVariables.get(\"newPosCard1\")\r",
+									"const posCard3=pm.collectionVariables.get(\"newPosCard3\")\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", () => {\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"La card deberia de estar en la List 'IN PROGRESS'\", () => {\r",
+									"    pm.expect(body.idList).to.be.eql(idListB)\r",
+									"})\r",
+									"\r",
+									"pm.collectionVariables.set(\"Poscard2\",pos);\r",
+									"pm.collectionVariables.set(\"Poscard1\",posCard1)\r",
+									"pm.collectionVariables.unset(\"newPosCard1\")\r",
+									"pm.collectionVariables.set(\"Poscard3\",posCard3)\r",
+									"pm.collectionVariables.unset(\"newPosCard3\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{UPDATE}}/:id?key={{key}}&token={{token}}&idList={{ListB}}",
+							"host": [
+								"{{UPDATE}}"
+							],
+							"path": [
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "idList",
+									"value": "{{ListB}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idCard2}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "US 23269 | TS2 | TC#4: Validar mover card1 a la posición 1 de la lista “IN PROGRESS”",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const posCard2= pm.collectionVariables.get(\"Poscard2\")\r",
+									"pm.collectionVariables.set(\"Poscard1\",posCard2/2)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body = pm.response.json()\r",
+									"const pos=body.pos\r",
+									"const idListB=pm.environment.get(\"ListB\")\r",
+									"const Poscard2=pm.collectionVariables.get(\"Poscard2\")\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", () => {\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"La card deberia de estar en la List 'IN PROGRESS'\", () => {\r",
+									"    pm.expect(body.idList).to.be.eql(idListB)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"La card deberia estar en la primera posicion\",()=>{\r",
+									"    pm.expect(pos).to.be.below(Poscard2)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{UPDATE}}/:id?key={{key}}&token={{token}}&idList={{ListB}}&pos={{Poscard1}}",
+							"host": [
+								"{{UPDATE}}"
+							],
+							"path": [
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "idList",
+									"value": "{{ListB}}"
+								},
+								{
+									"key": "pos",
+									"value": "{{Poscard1}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idCard1}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "US 23269 | TS2 | TC#5: Validar mover card3 la lista “IN PROGRESS” (ultima posición)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const posCard2= pm.collectionVariables.get(\"Poscard2\")\r",
+									"const posCard1= pm.collectionVariables.get(\"Poscard1\")\r",
+									"pm.collectionVariables.set(\"Poscard3\",(posCard2+posCard1)+2)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body = pm.response.json()\r",
+									"const pos=body.pos\r",
+									"const idListB=pm.environment.get(\"ListB\")\r",
+									"const Poscard2=pm.collectionVariables.get(\"Poscard2\")\r",
+									"const Poscard1=pm.collectionVariables.get(\"Poscard1\")\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", () => {\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"La card deberia de estar en la List 'IN PROGRESS'\", () => {\r",
+									"    pm.expect(body.idList).to.be.eql(idListB)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"La card deberia estar en la ultima posicion\",()=>{\r",
+									"    pm.expect(pos).to.be.greaterThan(Poscard2).and.to.be.greaterThan(Poscard1)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{UPDATE}}/:id?key={{key}}&token={{token}}&idList={{ListB}}&pos={{Poscard3}}",
+							"host": [
+								"{{UPDATE}}"
+							],
+							"path": [
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "idList",
+									"value": "{{ListB}}"
+								},
+								{
+									"key": "pos",
+									"value": "{{Poscard3}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idCard3}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "US 23269 | TS2 | TC#6: Validar mover card1 a la lista “DONE”",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body = pm.response.json()\r",
+									"const pos=body.pos\r",
+									"const idListC=pm.environment.get(\"ListC\")\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", () => {\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"La card deberia de estar en la List 'DONE'\", () => {\r",
+									"    pm.expect(body.idList).to.be.eql(idListC)\r",
+									"})\r",
+									"\r",
+									"pm.collectionVariables.set(\"Poscard1\",pos);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{UPDATE}}/:id?key={{key}}&token={{token}}&idList={{ListC}}",
+							"host": [
+								"{{UPDATE}}"
+							],
+							"path": [
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "idList",
+									"value": "{{ListC}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idCard1}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "US 23269 | TS2 | TC#7: Validar mover card3 a la lista “DONE” (última posición)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const posCard1= pm.collectionVariables.get(\"Poscard1\")\r",
+									"pm.collectionVariables.set(\"Poscard3\",posCard1*2)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body = pm.response.json()\r",
+									"const pos=body.pos\r",
+									"const idListC=pm.environment.get(\"ListC\")\r",
+									"const Poscard1=pm.collectionVariables.get(\"Poscard1\")\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", () => {\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"La card deberia de estar en la List 'DONE'\", () => {\r",
+									"    pm.expect(body.idList).to.be.eql(idListC)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"La card deberia estar en la ultima posicion\",()=>{\r",
+									"    pm.expect(pos).to.be.greaterThan(Poscard1)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{UPDATE}}/:id?key={{key}}&token={{token}}&idList={{ListC}}&pos={{Poscard3}}",
+							"host": [
+								"{{UPDATE}}"
+							],
+							"path": [
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "idList",
+									"value": "{{ListC}}"
+								},
+								{
+									"key": "pos",
+									"value": "{{Poscard3}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idCard3}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "US 23269 | TS2| TC#8: Validar mover card2 a la posición 2 de la lista “DONE”",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const posCard1= pm.collectionVariables.get(\"Poscard1\")\r",
+									"const posCard3= pm.collectionVariables.get(\"Poscard3\")\r",
+									"pm.collectionVariables.set(\"Poscard2\",(posCard3-posCard1)+1)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body = pm.response.json()\r",
+									"const pos=body.pos\r",
+									"const idListC=pm.environment.get(\"ListC\")\r",
+									"const Poscard1=pm.collectionVariables.get(\"Poscard1\")\r",
+									"const Poscard3=pm.collectionVariables.get(\"Poscard3\")\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", () => {\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"La card deberia de estar en la List 'DONE'\", () => {\r",
+									"    pm.expect(body.idList).to.be.eql(idListC)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"La card deberia estar en la segunda posicion\",()=>{\r",
+									"    pm.expect(pos).to.be.below(Poscard3).and.to.be.greaterThan(Poscard1)\r",
+									"})\r",
+									"\r",
+									"\r",
+									"pm.collectionVariables.unset(\"Poscard1\")\r",
+									"pm.collectionVariables.unset(\"Poscard2\")\r",
+									"pm.collectionVariables.unset(\"Poscard3\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{UPDATE}}/:id?key={{key}}&token={{token}}&idList={{ListC}}&pos={{Poscard2}}",
+							"host": [
+								"{{UPDATE}}"
+							],
+							"path": [
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "idList",
+									"value": "{{ListC}}"
+								},
+								{
+									"key": "pos",
+									"value": "{{Poscard2}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idCard2}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US 23269 | TS3 | {API} Trello | Cards | remover cards de un tablero.",
+			"item": [
+				{
+					"name": "US 23269 | TS3| TC#1: Validar archivar card1.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body = pm.response.json()\r",
+									"\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", () => {\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"La card deberia estar archivada\", () => {\r",
+									"    pm.expect(body.closed).to.be.eql(true)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{UPDATE}}/:id?key={{key}}&token={{token}}&closed=true",
+							"host": [
+								"{{UPDATE}}"
+							],
+							"path": [
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "closed",
+									"value": "true"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idCard1}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "US 23269 | TS3 | TC#2: Validar desarchivar card1.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body = pm.response.json()\r",
+									"\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", () => {\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"La card deberia estar archivada\", () => {\r",
+									"    pm.expect(body.closed).to.be.eql(false)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{UPDATE}}/:id?key={{key}}&token={{token}}&closed=false",
+							"host": [
+								"{{UPDATE}}"
+							],
+							"path": [
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								},
+								{
+									"key": "closed",
+									"value": "false"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idCard1}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "US 23269 | TS3| TC#3: Validar eliminar card1.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body = pm.response.json()\r",
+									"\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", () => {\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{DELETE}}/:id?key={{key}}&token={{token}}",
+							"host": [
+								"{{DELETE}}"
+							],
+							"path": [
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idCard1}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verificar card1 elininada",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.collectionVariables.unset(\"idCard1\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{GETboards}}/:id/{{memberships}}?key={{key}}&token={{token}}",
+							"host": [
+								"{{GETboards}}"
+							],
+							"path": [
+								":id",
+								"{{memberships}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idCard1}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "limpieza",
+			"item": [
+				{
+					"name": "eliminar card2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body = pm.response.json()\r",
+									"\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", () => {\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{DELETE}}/:id?key={{key}}&token={{token}}",
+							"host": [
+								"{{DELETE}}"
+							],
+							"path": [
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idCard2}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verificar card2 eliminada",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.collectionVariables.unset(\"idCard2\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{GETboards}}/:id/{{memberships}}?key={{key}}&token={{token}}",
+							"host": [
+								"{{GETboards}}"
+							],
+							"path": [
+								":id",
+								"{{memberships}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idCard2}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar card3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const body = pm.response.json()\r",
+									"\r",
+									"\r",
+									"pm.test(\"Deberia de optener un status 200 de respuesta\", () => {\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{DELETE}}/:id?key={{key}}&token={{token}}",
+							"host": [
+								"{{DELETE}}"
+							],
+							"path": [
+								":id"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idCard3}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verificar card3 eliminada",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.collectionVariables.unset(\"idCard3\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{GETboards}}/:id/{{memberships}}?key={{key}}&token={{token}}",
+							"host": [
+								"{{GETboards}}"
+							],
+							"path": [
+								":id",
+								"{{memberships}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idCard3}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "CardDesc",
+			"value": ""
+		}
+	]
+}
